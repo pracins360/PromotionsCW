@@ -104,8 +104,9 @@ body {
 
 .info {
   text-align: center;
-  padding: 20px;
+  padding: 10px 20px 30px;
 }
+``
 
 .info h2 {
   margin-bottom: 15px;

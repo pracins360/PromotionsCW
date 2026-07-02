@@ -197,20 +197,27 @@ imageInput.addEventListener("change", function () {
 
 document
 .getElementById("promoForm")
-.addEventListener("submit", function(e){
+.addEventListener("submit", async function(e) {
 
     e.preventDefault();
 
-    alert(
-        "Promotion saved successfully.\n\n" +
-        "Title: " +
-        document.getElementById("promoTitle").value
-    );
+    const imageFile =
+        document.getElementById("promoImage").files[0];
 
+    let imageUrl = "";
+
+    if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+    }
+
+    alert(
+        "Upload Successful!\n\n" +
+        imageUrl
+    );
 });
 
 </script>
-
+<script src="js/upload.js"></script>
 </body>
 </html>
 ``

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Promotion - PromotionsCW</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .promo-container{
+            max-width:700px;
+            margin:20px auto;
+            padding:20px;
+        }
+
+        .promo-card{
+            background:rgba(255,255,255,.12);
+            padding:25px;
+            border-radius:15px;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:6px;
+            font-weight:bold;
+        }
+
+        input,
+        textarea,
+        select{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            font-size:16px;
+        }
+
+        textarea{
+            min-height:120px;
+            resize:vertical;
+        }
+
+        .image-preview{
+            width:100%;
+            max-height:250px;
+            object-fit:cover;
+            margin-top:10px;
+            border-radius:10px;
+            display:none;
+        }
+
+        .save-btn{
+            width:100%;
+            margin-top:25px;
+            padding:16px;
+
+            border:none;
+            border-radius:12px;
+
+            background:white;
+            color:#0057b8;
+
+            font-size:18px;
+            font-weight:bold;
+
+            cursor:pointer;
+        }
+
+        .back-btn{
+            display:block;
+            text-align:center;
+            margin-top:20px;
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="promo-container">
+
+    <div class="promo-card">
+
+        <h1>Create Promotion</h1>
+
+        <form id="promoForm">
+
+            <label>Promotion Title</label>
+            <input
+                type="text"
+                id="promoTitle"
+                placeholder="Example: 2 Burgers for $10"
+                required
+            >
+
+            <label>Description</label>
+            <textarea
+                id="promoDescription"
+                placeholder="Describe your special offer..."
+                required
+            ></textarea>
+
+            <label>Category</label>
+
+            <select id="promoCategory">
+
+                <option>Restaurant</option>
+                <option>Retail Store</option>
+                <option>Beauty & Wellness</option>
+                <option>Automotive</option>
+                <option>Tourism</option>
+                <option>Professional Services</option>
+                <option>Other</option>
+
+            </select>
+
+            <label>Start Date</label>
+            <input type="date" id="startDate" required>
+
+            <label>End Date</label>
+            <input type="date" id="endDate" required>
+
+            <label>WhatsApp Number</label>
+            <input
+                type="tel"
+                id="promoWhatsapp"
+                placeholder="599..."
+                required
+            >
+
+            <label>Promotion Image</label>
+            <input
+                type="file"
+                id="promoImage"
+                accept="image/*"
+            >
+
+            <img
+                id="previewImage"
+                class="image-preview"
+                alt="Preview"
+            >
+
+            <button class="save-btn" type="submit">
+                SAVE PROMOTION
+            </button>
+
+        </form>
+
+    </div>
+
+    <a href="dashboard.html" class="back-btn">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<script>
+
+const imageInput =
+document.getElementById("promoImage");
+
+const previewImage =
+document.getElementById("previewImage");
+
+imageInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        previewImage.src = e.target.result;
+
+        previewImage.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+document
+.getElementById("promoForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    alert(
+        "Promotion saved successfully.\n\n" +
+        "Title: " +
+        document.getElementById("promoTitle").value
+    );
+
+});
+
+</script>
+
+</body>
+</html>
+``
